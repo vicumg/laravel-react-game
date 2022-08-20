@@ -23,6 +23,6 @@
         @vite('resources/js/app.jsx')
     </head>
     <body class="antialiased">
-        <div id="example"></div>
+        <div id="app"></div>
     </body>
 </html>
