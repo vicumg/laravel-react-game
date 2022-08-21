@@ -23,6 +23,7 @@
         @vite('resources/js/app.tsx')
     </head>
     <body class="antialiased">
-        <div id="app"></div>
+        Main page
+    <a href="{{ route('login') }}">login</a>
     </body>
 </html>
