@@ -20,7 +20,7 @@
             }
         </style>
         @viteReactRefresh
-        @vite('resources/js/app.jsx')
+        @vite('resources/js/app.tsx')
     </head>
     <body class="antialiased">
         <div id="app"></div>
