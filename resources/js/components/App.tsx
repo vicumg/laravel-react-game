@@ -1,34 +1,35 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link
+} from "react-router-dom"
+import {Overview} from "./Overview";
+import {Buildings} from "./Buildings";
+import {Researches} from "./Researches";
 
-export interface IUser{
-    name: string,
-    age:number,
-}
 
- const App = ()=> {
-    const [users, setUser] = useState<IUser[]>([
-        {
-            name: "Viktor",
-            age: 26,
-        },
-        {
-            name: "Boris",
-            age: 18
-        }
-    ]);
-
+const App = () => {
     return (
-        <div className="container">
-            <ul>
-                {users.map((user: IUser) =>{
-                    return (
-                        <li key={user.name}>
-                            {user.name} is {user.age} years old
-                        </li>
-                    )
-                })}
-            </ul>
-        </div>
+        <Router>
+            <div className="container">
+                <div className={'row'}>
+                    <div className={"col-3"}>
+                        <Link to={"/dashboard"}>Обзор</Link><br/>
+                        <Link to={"/buildings"}>Постройки</Link><br/>
+                        <Link to={"/researches"}>Исследования</Link><br/>
+                    </div>
+                    <div className={"col-9"}>
+                        <Routes>
+                            <Route path={'dashboard'} element={<Overview/>}/>
+                            <Route path={'buildings'} element={<Buildings/>}/>
+                            <Route path={'researches'} element={<Researches/>}/>
+                        </Routes>
+                    </div>
+                </div>
+            </div>
+        </Router>
     );
 }
 
