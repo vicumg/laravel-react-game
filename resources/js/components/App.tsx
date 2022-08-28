@@ -16,9 +16,12 @@ const App = () => {
             <div className="container">
                 <div className={'row'}>
                     <div className={"col-3"}>
-                        <Link to={"/dashboard"}>Обзор</Link><br/>
-                        <Link to={"/buildings"}>Постройки</Link><br/>
-                        <Link to={"/researches"}>Исследования</Link><br/>
+                        <Link to={"/dashboard"}>Обзор</Link>
+                        <br/>
+                        <Link to={"/buildings"}>Постройки</Link>
+                        <br/>
+                        <Link to={"/researches"}>Исследования</Link>
+                        <br/>
                     </div>
                     <div className={"col-9"}>
                         <Routes>

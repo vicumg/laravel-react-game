@@ -25,5 +25,6 @@
     <body class="antialiased">
         Main page
     <a href="{{ route('login') }}">login</a>
+    <a href="{{ route('register') }}">Register</a>
     </body>
 </html>
