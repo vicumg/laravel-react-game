@@ -46,6 +46,7 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+        //TODO create island for user by listener
 
         Auth::login($user);
 
