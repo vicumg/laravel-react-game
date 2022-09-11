@@ -5,17 +5,17 @@ namespace App\Http\Commands;
 use App\Models\Island;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
-
+use Illuminate\Support\Facades\Log;
+use App\Http\Enums\ErrorStrings;
 class CreateIslandCommand
 {
     public function handle(Registered $event)
     {
-        $stop = "";
-        echo __CLASS__;
-
-        $user = $event->user;
-
-        $this->createIsland($user);
+        try {
+            $this->createIsland($event->user);
+        }catch (\Exception $e){
+            Log::error(ErrorStrings::ERROR_CREATE_ISLAND->value, [$event, $e->getMessage()]);
+        }
 
     }
 
