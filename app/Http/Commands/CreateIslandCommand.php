@@ -3,6 +3,7 @@
 namespace App\Http\Commands;
 
 use App\Models\Island;
+use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 
 class CreateIslandCommand
@@ -12,18 +13,27 @@ class CreateIslandCommand
         $stop = "";
         echo __CLASS__;
 
-        $user = "user";
+        $user = $event->user;
 
         $this->createIsland($user);
 
     }
 
-    private function createIsland(string $user)
+    private function createIsland(User $user)
     {
-        $coord_x = rand(1,100);
-        $coord_y = rand(1,100);
 
-        $island = Island::where('point_x', $coord_x)->where('point_y', $coord_y);
-        //TODO:continue
+        do {
+            $coord_x = rand(1,100);
+            $coord_y = rand(1,100);
+            $island = Island::where('point_x', $coord_x)->where('point_y', $coord_y)->first();
+
+        } while($island !== NULL);
+
+        Island::factory(1)->create([
+            'point_x' => $coord_x,
+            'point_y' => $coord_y,
+            'user_id' => $user->id,
+            'title' => 'Остров игрока' . $user->name,
+        ]);
     }
 }
